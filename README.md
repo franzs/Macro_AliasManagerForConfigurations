@@ -6,7 +6,7 @@
 
  This has ONLY be tested on Mac OS.
 |Author=Ron Zancola
-|Version=00.10
+|Version=00.11
 |Date=23/10/2023
 |FCVersion=0.21.1
 |Download=[https://www.freecadweb.org/wiki/images/AliasManagerConfigs.svg ToolBar Icon]
@@ -65,7 +65,7 @@ ToolBar icon ![](./images/AliasManagerConfigs.svg )
     # ============================================================================================================
     # ABOUT
     # ============================================================================================================
-    # version v0.10
+    # version v0.11
     # Macro developed for FreeCAD (http://www.freecadweb.org/).
     # This macro helps managing aliases inside FreeCAD Spreadsheet workbench. It is a variant of alias Manager by 
     # 2016 tarihatari & Pablo Gil Fernandez and EasyAlias by TheMarkster and rosta
@@ -95,15 +95,15 @@ ToolBar icon ![](./images/AliasManagerConfigs.svg )
     # ============================================================================================================
     __title__   = "Alias Manager for Configuration Tables"
     __author__  = "Ron Zancola"
-    __version__ = "00.10"
-    __date__    = "23/10/2023"
+    __version__ = "00.11"
+    __date__    = "06/10/2025"
      
     __Comment__ = "This macro helps managing aliases inside FreeCAD Spreadsheet workbench. It is able to set/clear the alias of a cell(s). The text in the cell above or left is used for the alias."
      
     __Wiki__ = "https://github.com/ronz0215/Macro_AliasManagerForConfigurations"
     __Help__ = "https://github.com/ronz0215/Macro_AliasManagerForConfigurations"
     __Status__ = "dev"
-    __Requires__ = "FreeCAD 0.16"
+    __Requires__ = "FreeCAD 0.19"
     
     from PySide import QtGui, QtCore
     from PySide.QtCore import Qt
@@ -143,7 +143,7 @@ ToolBar icon ![](./images/AliasManagerConfigs.svg )
             QtCore.QObject.connect(okbox, QtCore.SIGNAL("rejected()"), self.close)
             QtCore.QMetaObject.connectSlotsByName(self.dialog)
             self.dialog.show()
-            self.dialog.exec_()
+            self.dialog.exec()
     
         def close(self):
             self.dialog.close()
@@ -320,7 +320,7 @@ ToolBar icon ![](./images/AliasManagerConfigs.svg )
     
         def popup(self):
             self.dialog2 = infoPopup()
-            self.dialog2.exec_()
+            self.dialog2.exec()
     
         def close(self):
             App.ActiveDocument.recompute()
@@ -406,10 +406,10 @@ ToolBar icon ![](./images/AliasManagerConfigs.svg )
     
     
             self.dialog.show()
-            self.dialog.exec_()
+            self.dialog.exec()
     
     p()
- 
+
 
 
 ---
