@@ -65,7 +65,7 @@ ToolBar icon ![](./images/AliasManagerConfigs.svg )
     # ============================================================================================================
     # ABOUT
     # ============================================================================================================
-    # version v0.11
+    # version v0.12
     # Macro developed for FreeCAD (http://www.freecadweb.org/).
     # This macro helps managing aliases inside FreeCAD Spreadsheet workbench. It is a variant of alias Manager by 
     # 2016 tarihatari & Pablo Gil Fernandez and EasyAlias by TheMarkster and rosta
@@ -95,7 +95,7 @@ ToolBar icon ![](./images/AliasManagerConfigs.svg )
     # ============================================================================================================
     __title__   = "Alias Manager for Configuration Tables"
     __author__  = "Ron Zancola"
-    __version__ = "00.11"
+    __version__ = "00.12"
     __date__    = "06/10/2025"
      
     __Comment__ = "This macro helps managing aliases inside FreeCAD Spreadsheet workbench. It is able to set/clear the alias of a cell(s). The text in the cell above or left is used for the alias."
@@ -190,6 +190,13 @@ ToolBar icon ![](./images/AliasManagerConfigs.svg )
                 linkedObject = selectedObject.LinkedObject
                 if linkedObject.TypeId == 'Spreadsheet::Sheet':
                     spreadsheets.add(linkedObject)
+    
+        if not spreadsheets:
+            doc = FreeCAD.ActiveDocument
+            all_spreadsheets = [obj for obj in doc.Objects if obj.TypeId == "Spreadsheet::Sheet"]
+            if len(all_spreadsheets) == 1:
+                spreadsheets.add(all_spreadsheets[0])
+    
         return spreadsheets
     
     # The original implementatin of a1_to_rowcol and rowcol_to_a1 can be found here:
@@ -409,7 +416,6 @@ ToolBar icon ![](./images/AliasManagerConfigs.svg )
             self.dialog.exec()
     
     p()
-
 
 
 ---
